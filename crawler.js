@@ -5,14 +5,25 @@ var page = require('webpage').create();
 var urlTemplate = 'https://www.semanticscholar.org/search?q=KEYWORD&page=PAGE_NUM'
 urlTemplate = urlTemplate.replace(/KEYWORD/,'linear%20regression');
 
-var pageNum = 20, i = 0;
+var finalResults = [];
+var pageNum = 3, i = 0;
 (function loop(){
     var url = urlTemplate.replace(/PAGE_NUM/,i);
-    processPage(url, function(){
+    processPage(url, function(articleCites){
+        finalResults = finalResults.concat(articleCites);
+
         i++;
-        if(i<pageNum) loop();
+        if(i<pageNum){
+            loop();
+        }else{
+            over();
+        }
     });
 })();
+
+function over(){
+    console.log(finalResults.length);
+}
 
 function processPage(url, done){
     page.open(url, function() {
@@ -43,8 +54,11 @@ function processPage(url, done){
             function handleCites(){
                 // 只点击一次
                 if(!citeClicked){
-                    var finish = page.evaluate(function(){
+                    var articleCites = page.evaluate(function(){
                         var paperActions = $("article > .paper-actions");
+
+                        var articleCites = [];
+
                         // 遍历每个搜索结果
                         for (var count = 0; count < paperActions.length; count++) {
                             console.log('---------------------------------');
@@ -64,26 +78,27 @@ function processPage(url, done){
                                 formatBtns.push(btn);
                             }
 
+                            var articleCite = {};
+
                             // 依次点击每种格式并获取信息
                             for (var i = 0; i < formatBtns.length; i++) {
                                 var btn = formatBtns[i];
                                 btn[0].click();
 
                                 var cite = modal.find('cite:eq(0)');
+                                articleCite[btn.text()] = cite.text();
+
                                 console.log('['+btn.text()+']'+cite.text());
                             }
 
-                            return true;
+                            articleCites.push(articleCite);
                         }
+
+                        return articleCites;
                     });
 
                     citeClicked = true;
-
-                    if(finish){
-                        done();
-                    }else{
-                        console.log('exit error?');
-                    }
+                    done(articleCites);
                 }
             }
         });
