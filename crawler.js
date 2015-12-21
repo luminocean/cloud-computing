@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 console.log('crawler starts...');
 
 var page = require('webpage').create();
@@ -6,7 +8,7 @@ var urlTemplate = 'https://www.semanticscholar.org/search?q=KEYWORD&page=PAGE_NU
 urlTemplate = urlTemplate.replace(/KEYWORD/,'linear%20regression');
 
 var finalResults = [];
-var pageNum = 3, i = 0;
+var pageNum = 23, i = 0, requiredArticleNum = 200;
 (function loop(){
     var url = urlTemplate.replace(/PAGE_NUM/,i);
     processPage(url, function(articleCites){
@@ -16,13 +18,47 @@ var pageNum = 3, i = 0;
         if(i<pageNum){
             loop();
         }else{
-            over();
+            console.log('finish work...')
+            if(finalResults.length < 200){
+                console.log('cite data insufficient');
+            }else{
+                finalResults = finalResults.splice(0,200);
+            }
+            over(finalResults);
         }
     });
 })();
 
-function over(){
-    console.log(finalResults.length);
+// 将获取的结果输出到文本文件中
+function over(resultDataSet){
+    console.log('Result set size:' + resultDataSet.length);
+
+    var formats = ['BibTex','MLA','APA','Chicago'];
+    // 各个文件内容初始化
+    var fileContents = {}; // 每种格式一个属性，值为文本内容
+    for (var i = 0; i < formats.length; i++) {
+        fileContents[formats[i]] = '';
+    }
+
+    // 处理数据集
+    for (var j = 0; j < resultDataSet.length; j++) {
+        // 单个文献
+        var dataItem = resultDataSet[j];
+        // 每种格式
+        for (var i = 0; i < formats.length; i++) {
+            var format = formats[i];
+            fileContents[format] += dataItem[format];
+            fileContents[format] += '\n\n';
+        }
+    }
+
+    for (var i = 0; i < formats.length; i++) {
+        var format = formats[i];
+
+        fs.write(format+'.txt', fileContents[format], 'w');
+    }
+
+    phantom.exit();
 }
 
 function processPage(url, done){
@@ -66,6 +102,12 @@ function processPage(url, done){
 
                             var action = $(paperActions.get(count));
 
+                            var firstBtn = action.find('li > a:eq(0)');
+                            // 跳过坑
+                            if(firstBtn.text() === 'External Link'){
+                                console.log('passed invalid result.');
+                                continue;
+                            }
                             var citeBtn = action.find('li > a:eq(1)');
                             citeBtn[0].click(); // 点击site按钮
 
