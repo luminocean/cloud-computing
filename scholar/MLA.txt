@@ -274,8 +274,6 @@ Gerchinovitz, Sébastien. “Sparsity Regret Bounds for Individual Sequences in 
 
 Liu, Xianming et al. “Image interpolation via regularized local linear regression.” PCS (2010).
 
-undefined
-
 Jaakkola, Tommi S. and David Haussler. “Probabilistic kernel regression models.” AISTATS (1999).
 
 Kim, Seyoung and Eric P. Xing. “Tree-Guided Group Lasso for Multi-Task Regression with Structured Sparsity.” ICML (2010).
@@ -397,4 +395,6 @@ Sculley, D.. “Combined regression and ranking.” KDD (2010).
 Gu, Allan and Avideh Zakhor. “Optical Proximity Correction with Linear Regression.”  (2007).
 
 Tropp, Joel A. and Anna C. Gilbert. “Signal Recovery From Random Measurements Via Orthogonal Matching Pursuit.” IEEE Transactions on Information Theory 53 (2007): 4655-4666.
+
+Wang, Weiguang et al. “Block Regularized Lasso for Multivariate Multi-Response Linear Regression.” AISTATS (2013).
 

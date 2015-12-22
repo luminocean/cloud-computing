@@ -18,7 +18,15 @@ var pageNum = 23, i = 0, requiredArticleNum = 200;
         if(i<pageNum){
             loop();
         }else{
-            console.log('finish work...')
+            // 清洗结果集
+            finalResults = finalResults.filter(function(result){
+                var pass = false;
+                for(var attr in result){
+                    if(!result[attr] || result[attr] === 'undefined') return false;
+                    pass = true;
+                }
+                return pass;
+            });
             if(finalResults.length < 200){
                 console.log('cite data insufficient');
             }else{

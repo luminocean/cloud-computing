@@ -1057,8 +1057,6 @@
   year={2010}
 }
 
-undefined
-
 @inproceedings{Jaakkola1999AISTATS,
   title={Probabilistic kernel regression models},
   author={Tommi S. Jaakkola and David Haussler},
@@ -1515,5 +1513,12 @@ undefined
   year={2007},
   volume={53},
   pages={4655-4666}
+}
+
+@inproceedings{Wang2013AISTATS,
+  title={Block Regularized Lasso for Multivariate Multi-Response Linear Regression},
+  author={Weiguang Wang and Yingbin Liang and Eric P. Xing},
+  booktitle={AISTATS},
+  year={2013}
 }
 
