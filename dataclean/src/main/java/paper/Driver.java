@@ -11,7 +11,6 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 import bibtex.BibTexMapper;
-import bibtex.BibTexReducer;
 import bibtex.SkipLineInputFormat;
 
 public class Driver extends Configured implements Tool {
@@ -25,21 +24,20 @@ public class Driver extends Configured implements Tool {
 		
 		JobConf conf = new JobConf(getConf());
 		Job job = Job.getInstance(conf, "Paper Clean");
+		job.setJarByClass(getClass());
+		
 		// 配置多源输入路径
 		MultipleInputs.addInputPath(job, 
 				new Path(args[0]), // 文件夹路径
 				SkipLineInputFormat.class, // 输入格式
 				BibTexMapper.class); // Mapper类
-
-		// 配置输出路径
-		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		
-		job.setJarByClass(getClass());
-		job.setMapperClass(BibTexMapper.class);
-		job.setReducerClass(BibTexReducer.class);
+		job.setReducerClass(PaperReducer.class);
 		job.setOutputKeyClass(NullWritable.class);
 		job.setOutputValueClass(Paper.class);
 		
+		// 配置输出路径
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
 

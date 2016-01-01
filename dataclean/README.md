@@ -1,0 +1,13 @@
+- main入口在paper.Driver里面
+
+- 为了让MapReduce程序与其他部分尽可能解耦合，输入输出路径通过命令行参数传入，而不是写死在代码里。
+因此请在Run Configurations -> Arguments -> Program Arguments里添加参数，如
+```
+-conf 
+src/main/resources/config/hadoop-local.xml 
+src/main/resources/input/bibtex
+target/output
+```
+在Tool.run方法中(Driver.java)使用args[0]和args[1]就可以取出输入和输出参数
+
+> -conf选项用来传入配置文件，不知道会不会用到，反正先写在这里。这个选项会被ToolRunner吃掉，因此不会占用run方法入参的数目
