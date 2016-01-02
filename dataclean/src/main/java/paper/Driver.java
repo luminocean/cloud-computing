@@ -6,12 +6,12 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 import bibtex.BibTexMapper;
-import bibtex.SkipLineInputFormat;
 
 public class Driver extends Configured implements Tool {
 	@Override
@@ -23,13 +23,15 @@ public class Driver extends Configured implements Tool {
 		}
 		
 		JobConf conf = new JobConf(getConf());
+		// 设置隔行读取
+		conf.set("textinputformat.record.delimiter", "\n\n");
 		Job job = Job.getInstance(conf, "Paper Clean");
 		job.setJarByClass(getClass());
 		
 		// 配置多源输入路径
 		MultipleInputs.addInputPath(job, 
 				new Path(args[0]), // 文件夹路径
-				SkipLineInputFormat.class, // 输入格式
+				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
 				BibTexMapper.class); // Mapper类
 		
 		job.setReducerClass(PaperReducer.class);
