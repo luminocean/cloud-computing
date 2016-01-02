@@ -22,10 +22,10 @@ public class Driver extends Configured implements Tool {
 			return -1;
 		}
 		
-		JobConf conf = new JobConf(getConf());
 		// 设置隔行读取
-		conf.set("textinputformat.record.delimiter", "\n\n");
-		Job job = Job.getInstance(conf, "Paper Clean");
+		getConf().set("textinputformat.record.delimiter", "\n\n");
+		
+		Job job = Job.getInstance(getConf(), "Data Clean");
 		job.setJarByClass(getClass());
 		
 		// 配置多源输入路径
