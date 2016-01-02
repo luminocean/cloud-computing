@@ -13,6 +13,9 @@ public class BibTexMapper extends Mapper<Object, Text, NullWritable, Paper>{
 	protected void map(Object key, Text value, Context context)
 			throws IOException, InterruptedException {
 		Paper paper = BibTexParser.parse(value.toString());
+		if(paper == null) return;
+		
+		System.out.println(paper.author);
 		context.write(NullWritable.get(), paper);
 	}
 }

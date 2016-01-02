@@ -12,7 +12,6 @@ public class PaperReducer extends Reducer<NullWritable, Paper, NullWritable, Pap
 	protected void reduce(NullWritable nw, Iterable<Paper> papers,
 			Context context) throws IOException, InterruptedException {
 		for(Paper paper: papers){
-			System.out.println(paper);
 			context.write(NullWritable.get(), paper);
 		}	
 	}
