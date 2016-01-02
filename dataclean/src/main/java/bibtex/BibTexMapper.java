@@ -15,7 +15,6 @@ public class BibTexMapper extends Mapper<Object, Text, NullWritable, Paper>{
 		Paper paper = BibTexParser.parse(value.toString());
 		if(paper == null) return;
 		
-		System.out.println(paper.author);
 		context.write(NullWritable.get(), paper);
 	}
 }
