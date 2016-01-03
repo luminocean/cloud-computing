@@ -11,6 +11,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import apa.APAMapper;
 import bibtex.BibTexMapper;
 
 public class Driver extends Configured implements Tool {
@@ -21,7 +22,7 @@ public class Driver extends Configured implements Tool {
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
 		}
-		
+
 		// 设置隔行读取
 		getConf().set("textinputformat.record.delimiter", "\n\n");
 		
@@ -29,10 +30,12 @@ public class Driver extends Configured implements Tool {
 		job.setJarByClass(getClass());
 		
 		// 配置多源输入路径
+		//TODO args参数可以简化成bibtex/apa，根据参数选择Mapper类
 		MultipleInputs.addInputPath(job, 
 				new Path(args[0]), // 文件夹路径
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
-				BibTexMapper.class); // Mapper类
+//				BibTexMapper.class); // Mapper类
+				APAMapper.class); // Mapper类
 		
 		job.setReducerClass(PaperReducer.class);
 		job.setOutputKeyClass(NullWritable.class);

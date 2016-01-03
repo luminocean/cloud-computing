@@ -30,3 +30,5 @@ target/output
 - bibtex-06.txt缺一条
 
 - bibtex-10.txt与12.txt使用的是windows的\r\n换行符
+
+- apa-10.txt与apa-12.txt使用\r\n换行符，apa-4.txt使用的火星编码，存在非ascii码，目前无解

@@ -25,17 +25,16 @@ public class BibTexParser {
 		if(testContent.length() == 0) return null;
 		
 		Paper paper = new Paper();
-		String field = "";
 		
-		paper.author = (field=RegexUtil.findField(text, AUTHOR_REG)) == null ? "" : field;
-		paper.bookTitle = (field=RegexUtil.findField(text, BOOK_TITLE_REG)) == null ? "" : field;
-		paper.brief = (field=RegexUtil.findField(text, BRIEF_REG)) == null ? "" : field;
-		paper.journal = (field=RegexUtil.findField(text, JOURNAL_REG)) == null ? "" : field;
-		paper.page = (field=RegexUtil.findField(text, PAGE_REG)) == null ? "" : field;
-		paper.title = (field=RegexUtil.findField(text, TITLE_REG)) == null ? "" : field;
-		paper.type = (field=RegexUtil.findField(text, TYPE_REG)) == null ? "" : field;
-		paper.volume = (field=RegexUtil.findField(text, VOLUME_REG)) == null ? "" : field;
-		paper.year = (field=RegexUtil.findField(text, YEAR_REG)) == null ? "" : field;
+		paper.author = RegexUtil.findField(text, AUTHOR_REG).orElse("");
+		paper.bookTitle = RegexUtil.findField(text, BOOK_TITLE_REG).orElse("");
+		paper.brief = RegexUtil.findField(text, BRIEF_REG).orElse("");
+		paper.journal = RegexUtil.findField(text, JOURNAL_REG).orElse("");
+		paper.page = RegexUtil.findField(text, PAGE_REG).orElse("");
+		paper.title = RegexUtil.findField(text, TITLE_REG).orElse("");
+		paper.type = RegexUtil.findField(text, TYPE_REG).orElse("");
+		paper.volume = RegexUtil.findField(text, VOLUME_REG).orElse("");
+		paper.year = RegexUtil.findField(text, YEAR_REG).orElse("");
 		
 		return paper;
 	}

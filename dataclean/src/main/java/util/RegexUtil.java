@@ -1,5 +1,6 @@
 package util;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,13 +11,13 @@ public class RegexUtil {
 	 * @param regexStr
 	 * @return
 	 */
-	public static String findField(String text, String regexStr){
+	public static Optional<String> findField(String text, String regexStr){
 		Pattern p = Pattern.compile(regexStr);
 		Matcher m = p.matcher(text);
 		if(m.find()){
 			String result = m.group(1);
-			return result;
+			return Optional.of(result);
 		}
-		return null;
+		return Optional.empty();
 	}
 }
