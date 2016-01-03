@@ -29,7 +29,7 @@ public class PaperReducer extends Reducer<NullWritable, Paper, NullWritable, Pap
 	protected void reduce(NullWritable nw, Iterable<Paper> papers,
 			Context context) throws IOException, InterruptedException {
 		for(Paper paper: papers){
-			mout.write("OUT", NullWritable.get(), paper, "data");
+			mout.write(paper.PAPER_TYPE, NullWritable.get(), paper, paper.PAPER_TYPE);
 		}	
 	}
 }

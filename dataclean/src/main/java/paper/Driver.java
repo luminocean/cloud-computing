@@ -12,7 +12,6 @@ import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
-import org.apache.hadoop.mapreduce.lib.output.NullOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
@@ -24,6 +23,7 @@ public class Driver extends Configured implements Tool {
 	@Override
 	public int run(String[] args) throws Exception {
 		if (args.length != 3) {
+			System.err.printf("输入参数个数异常");
 			System.err.printf("Usage: %s [generic options] <input> <output>\n", getClass().getSimpleName());
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
@@ -33,11 +33,10 @@ public class Driver extends Configured implements Tool {
 		Configuration config = getConf();
 		String tableName = config.get("table");
 		boolean outputToHBase = tableName != null?true:false;
-		if(outputToHBase){
-			config.set(TableOutputFormat.OUTPUT_TABLE, tableName);
-		}
+		if(outputToHBase) config.set(TableOutputFormat.OUTPUT_TABLE, tableName);
 		config.set("textinputformat.record.delimiter", "\n\n"); // 设置隔行读取
 		
+		// job创建
 		Job job = Job.getInstance(config, "Data Clean");
 		job.setJarByClass(getClass());
 		
@@ -55,25 +54,30 @@ public class Driver extends Configured implements Tool {
 		job.setMapOutputKeyClass(NullWritable.class);
 		job.setMapOutputValueClass(Paper.class);
 		
-		// Reducer配置，区分输出到文本文件还是hbase
-		if(outputToHBase){
+		// Reducer配置
+		if(outputToHBase){ // 输出到hbase
 			job.setReducerClass(HBaseReducer.class);
 			job.setOutputFormatClass(TableOutputFormat.class);
 			job.setOutputKeyClass(ImmutableBytesWritable.class);
 			job.setOutputValueClass(Mutation.class);
-		}else{
-			MultipleOutputs.addNamedOutput(job, 
-					"BIBTEX", 
-					TextOutputFormat.class, 
-					NullWritable.class, 
-					Paper.class);
+		}else{ // 输出到文本文件
+			String[] formats = {"bibtex","apa"}; // 各种文献格式
+			for(String format: formats){
+				// 为每一种文献格式定义一个输出
+				// 在PaperReducer中使用
+				MultipleOutputs.addNamedOutput(job, 
+						format, 
+						TextOutputFormat.class, 
+						NullWritable.class, 
+						Paper.class);
+			}
 		
 			job.setReducerClass(PaperReducer.class);
 			job.setOutputKeyClass(NullWritable.class);
 			job.setOutputValueClass(Paper.class);
-			// job.setOutputFormatClass(NullOutputFormat.class);
 			
-			FileOutputFormat.setOutputPath(job, new Path(args[2])); // 配置输出路径
+			// 配置输出根路径，它是输入参数中最后一个
+			FileOutputFormat.setOutputPath(job, new Path(args[args.length-1])); 
 		}
 		
 		return job.waitForCompletion(true) ? 0 : 1;
