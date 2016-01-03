@@ -1,5 +1,10 @@
 # 代码说明
 
+Driver启动是需要命令行参数的。
+
+参数格式：
+`-conf [CONFIG_FILE] -D table=[HBASE_TABLE_NAME] [INPUT_PATH] [OUTPUT_PATH]`
+
 ### 1. 入口
 main入口在paper.Driver里面
 

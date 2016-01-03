@@ -11,6 +11,9 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
+import org.apache.hadoop.mapreduce.lib.output.NullOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -20,7 +23,7 @@ import bibtex.BibTexMapper;
 public class Driver extends Configured implements Tool {
 	@Override
 	public int run(String[] args) throws Exception {
-		if (args.length != 2) {
+		if (args.length != 3) {
 			System.err.printf("Usage: %s [generic options] <input> <output>\n", getClass().getSimpleName());
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
@@ -43,6 +46,11 @@ public class Driver extends Configured implements Tool {
 				new Path(args[0]), // 文件夹路径
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
 				BibTexMapper.class); // Mapper类
+		
+		MultipleInputs.addInputPath(job, // 配置多源输入路径
+				new Path(args[1]), // 文件夹路径
+				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
+				APAMapper.class); // Mapper类
 				
 		job.setMapOutputKeyClass(NullWritable.class);
 		job.setMapOutputValueClass(Paper.class);
@@ -54,9 +62,18 @@ public class Driver extends Configured implements Tool {
 			job.setOutputKeyClass(ImmutableBytesWritable.class);
 			job.setOutputValueClass(Mutation.class);
 		}else{
-			FileOutputFormat.setOutputPath(job, new Path(args[1])); // 配置输出路径
+			MultipleOutputs.addNamedOutput(job, 
+					"BIBTEX", 
+					TextOutputFormat.class, 
+					NullWritable.class, 
+					Paper.class);
+		
+			job.setReducerClass(PaperReducer.class);
 			job.setOutputKeyClass(NullWritable.class);
 			job.setOutputValueClass(Paper.class);
+			// job.setOutputFormatClass(NullOutputFormat.class);
+			
+			FileOutputFormat.setOutputPath(job, new Path(args[2])); // 配置输出路径
 		}
 		
 		return job.waitForCompletion(true) ? 0 : 1;
