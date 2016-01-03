@@ -16,7 +16,11 @@ target/output
 
 > -conf选项用来传入配置文件，不知道会不会用到，反正先写在这里。这个选项会被ToolRunner吃掉，因此不会占用run方法入参的数目
 
-### 3. 执行问题
+### 3. 输出到HBase
+在启动参数中指定 -D table=myhbasetable 即可让reduce输出到hbase数据库中。其中myhbasetable是你想写入的表的名称。
+如果不指定则写入到给定的输出目录中
+
+### 4. 执行问题
 如果map-reduce执行有异常，可以在log4j.properties中将调试级别降低以输出更多的log
 
 > FATAL > ERROR > INFO > DEBUG
