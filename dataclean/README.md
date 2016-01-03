@@ -30,3 +30,5 @@ target/output
 - bibtex-06.txt缺一条
 
 - bibtex-10.txt与12.txt使用的是windows的\r\n换行符
+
+- bibtex-12.txt多了一条数据
