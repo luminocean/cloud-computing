@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.apache.hadoop.io.Writable;
 
 public class Paper implements Writable{
+	public String PAPER_TYPE;
 	public String author;
 	public String bookTitle;
 	public String brief;
@@ -19,6 +20,7 @@ public class Paper implements Writable{
 	
 	@Override
 	public void write(DataOutput out) throws IOException {
+		out.writeUTF(PAPER_TYPE);
 		out.writeUTF(author);
 		out.writeUTF(bookTitle);
 		out.writeUTF(brief);
@@ -32,6 +34,7 @@ public class Paper implements Writable{
 	
 	@Override
 	public void readFields(DataInput in) throws IOException {
+		PAPER_TYPE = in.readUTF();
 		author = in.readUTF();
 		bookTitle = in.readUTF();
 		brief = in.readUTF();
@@ -45,8 +48,8 @@ public class Paper implements Writable{
 
 	@Override
 	public String toString() {
-		return "Paper [author=" + author + ", bookTitle=" + bookTitle + ", brief=" + brief + ", journal=" + journal
-				+ ", page=" + page + ", title=" + title + ", type=" + type + ", volume=" + volume + ", year=" + year
-				+ "]";
+		return "Paper [PAPER_TYPE=" + PAPER_TYPE + ", author=" + author + ", bookTitle=" + bookTitle + ", brief="
+				+ brief + ", journal=" + journal + ", page=" + page + ", title=" + title + ", type=" + type
+				+ ", volume=" + volume + ", year=" + year + "]";
 	}
 }

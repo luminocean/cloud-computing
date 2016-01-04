@@ -26,6 +26,7 @@ public class BibTexParser {
 		
 		Paper paper = new Paper();
 		
+		paper.PAPER_TYPE = "bibtex";
 		paper.author = RegexUtil.findField(text, AUTHOR_REG).orElse("");
 		paper.bookTitle = RegexUtil.findField(text, BOOK_TITLE_REG).orElse("");
 		paper.brief = RegexUtil.findField(text, BRIEF_REG).orElse("");

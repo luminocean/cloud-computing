@@ -1,29 +1,17 @@
-# 代码说明
+# 代码启动说明
 
-### 1. 入口
-main入口在paper.Driver里面
+Driver启动是需要命令行参数的。
 
-### 2. 启动参数
-为了让MapReduce程序与其他部分尽可能解耦合，输入输出路径通过命令行参数传入，而不是写死在代码里。
-因此请在Run Configurations -> Arguments -> Program Arguments里添加参数，如
-```
--conf
-src/main/resources/config/hadoop-local.xml
-src/main/resources/input/bibtex
-target/output
-```
-然后在Tool.run方法中(Driver.java)使用args[0]和args[1]就可以取出输入和输出参数。可以继续添加输入/输出路径，然后在Drive.java中使用对应的args[i]即可取得
+参数格式：
+`-conf [CONFIG_FILE_PATH] -D table=[HBASE_TABLE_NAME] [INPUT_PATH * n] [OUTPUT_PATH]`
 
-> -conf选项用来传入配置文件，不知道会不会用到，反正先写在这里。这个选项会被ToolRunner吃掉，因此不会占用run方法入参的数目
+其中
+- `CONFIG_FILE_PATH`是配置文件的路径。在Eclipse中就是相对于项目根目录的路径
+- `INPUT_PATH`可以有多个，在代码中可以使用`args[0]`,`args[1]`等来获取。同样在Eclipse中也是相对于项目根目录的路径
+- `-D table`属性用于指定要写入的HBase的表名。指定了table以后就不需要指定`OUTPUT_PATH`。
+- 如果不指定`-D table`属性，表示使用默认行为，即输出到文本文件里。此时必须指定`OUTPUT_PATH`，且应该放在最后一个
 
-### 3. 输出到HBase
-在启动参数中指定 -D table=myhbasetable 即可让reduce输出到hbase数据库中。其中myhbasetable是你想写入的表的名称。
-如果不指定则写入到给定的输出目录中
-
-### 4. 执行问题
-如果map-reduce执行有异常，可以在log4j.properties中将调试级别降低以输出更多的log
-
-> FATAL > ERROR > INFO > DEBUG
+在Eclipse中，参数可以在Run Configurations -> Arguments -> Program Arguments里添加
 
 # 坑
 
@@ -37,6 +25,8 @@ target/output
 
 - bibtex-12.txt多了一条数据
 
-- apa-10.txt与apa-12.txt使用\r\n换行符，apa-4.txt使用的火星编码，存在非ascii码，目前无解
+- apa-4.txt，apa-10.txt与apa-12.txt使用\r\n换行符
+
+- apa-4.txt和chicago-4.txt使用的火(utf)星(16)编码
 
 - chicago和mla引用使用的是全角双引号
