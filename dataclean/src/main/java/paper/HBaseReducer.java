@@ -6,10 +6,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.TableReducer;
-import org.apache.hadoop.hbase.util.Bytes;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.io.Text;
 
 public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableBytesWritable> {
 	// TODO: 这里的colomnFamily和colomn都是硬编码的，是否合适？
@@ -24,6 +21,7 @@ public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableByt
 	public static final byte[] volume = "volumn".getBytes();
 	public static final byte[] page = "page".getBytes();
 
+	@SuppressWarnings("unused")
 	private static boolean test = false;
 
 	@SuppressWarnings("deprecation")

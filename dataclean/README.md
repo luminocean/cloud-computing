@@ -13,6 +13,8 @@ Driver启动是需要命令行参数的。
 
 在Eclipse中，参数可以在Run Configurations -> Arguments -> Program Arguments里添加
 
+# HBASE建表
+create 'table','apa','bibtex','chicago','mla'
 # 坑
 
 - 有些文件多了换行，导致map会读进来空行，这个要处理
