@@ -37,13 +37,16 @@ public abstract class Parser {
 	}
 		
 	/**
-	 * 去除结尾的空格，逗号，句号，以及两边的括号
+	 * 去除结尾的空格，逗号，句号，以及两边的括号，全角双引号
 	 * @param rawStr
 	 * @return
 	 */
 	protected String trim(String rawStr) {
 		String ret = rawStr.trim().replaceAll("[,\\.]$", "");
-		if(ret.matches("^\\(.*?\\)$")) {
+		if(ret.matches("^“.*”$")) {
+			ret = ret.replaceAll("^“", "").replaceAll("”$", "");
+		}
+		if(ret.matches("^\\(.*\\)$")) {
 			ret = ret.replaceAll("^\\(", "").replaceAll("\\)$", "");
 		}
 		return ret;
