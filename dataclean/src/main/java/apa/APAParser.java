@@ -7,7 +7,7 @@ public class APAParser extends Parser{
 	private static final String AUTHOR_REG = "(.+?\\.\\s)";
 	private static final String YEAR_REG = "(\\(\\d+?\\)\\.\\s)";
 	private static final String TITLE_REG = "(.+?\\.\\s)";
-	private static final String JOURNAL_REG = "(.+?\\,\\s)";
+	private static final String JOURNAL_REG = "(.+?\\,\\s)\\d+,";
 	private static final String VOLUME_REG = "(\\d+?,\\s)";
 	private static final String PAGE_REG = "([-\\d]+?\\.)";
 	private static final String BOOK_TITLE_REG = "(.+?\\.)";
@@ -16,6 +16,13 @@ public class APAParser extends Parser{
 		super(text);
 	}
 
+	/**
+	 * BibTeX的type只涉及article和inproceedings两种，对应的APA格式分别是
+	 * article: Author, A.A.. (Year, month of Publication). Article title. Magazine Title,Volume, pp.-pp.
+	 * inproceedings: Author, A.A.. (Year of Publication). Title of work. Publisher.
+	 * BibTeX里的bookTitle其实是Publisher
+	 */
+	@Override
 	public Paper parse() {
 		String testContent = text.replace("\n", "").replace(" ", "").replace("\t", "");
 		if(testContent.length() == 0) return null;
@@ -33,11 +40,4 @@ public class APAParser extends Parser{
 		paper.brief = "";
 		return paper;
 	}
-
-//	public static void main(String args[]) {
-//		String text1 = "Brin, S., & Page, L.. (1998). Reprint of: The anatomy of a large-scale hypertextual web search engine. Computer Networks, 56, 3825-3833.";
-//		System.out.println(new APAParser(text1).parse());
-//		String text2 = "Chen, D.M., Chandrasekhar, V., Girod, B., Singh, J.P., Tsai, S.S., & Takacs, G.. (2009). Location coding for mobile image retrieval. MOBIMEDIA.";
-//		System.out.println(new APAParser(text2).parse());
-//	}
 }

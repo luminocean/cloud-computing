@@ -25,6 +25,8 @@ Driver启动是需要命令行参数的。
 
 - bibtex-12.txt多了一条数据
 
-- apa-10.txt与apa-12.txt使用\r\n换行符
+- apa-4.txt，apa-10.txt与apa-12.txt使用\r\n换行符
 
-- apa-4.txt使用的火星编码，utf16
+- apa-4.txt和chicago-4.txt使用的火(utf)星(16)编码
+
+- chicago和mla引用使用的是全角双引号
