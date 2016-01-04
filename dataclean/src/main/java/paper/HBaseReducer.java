@@ -11,8 +11,9 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 
 public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableBytesWritable> {
-	public static final byte[] CF = "cite".getBytes();
-	public static final byte[] COL = "paper".getBytes();
+	// TODO: 这里的colomnFamily和colomn都是硬编码的，是否合适？
+	public static final byte[] CF = "paper".getBytes(); 
+	public static final byte[] COL = "cite".getBytes();
 
 	public void reduce(NullWritable nw, Iterable<Paper> papers, Context context)
 			throws IOException, InterruptedException {
