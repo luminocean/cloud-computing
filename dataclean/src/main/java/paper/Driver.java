@@ -16,7 +16,6 @@ import org.apache.hadoop.util.ToolRunner;
 
 import apa.APAMapper;
 import bibtex.BibTexMapper;
-import chicago.ChicagoMapper;
 
 public class Driver extends Configured implements Tool {
 	@Override
@@ -43,7 +42,7 @@ public class Driver extends Configured implements Tool {
 		MultipleInputs.addInputPath(job, // 配置多源输入路径
 				new Path(args[0]), // 文件夹路径
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
-				ChicagoMapper.class); // Mapper类
+				BibTexMapper.class); // Mapper类
 				
 		job.setMapOutputKeyClass(NullWritable.class);
 		job.setMapOutputValueClass(Paper.class);
