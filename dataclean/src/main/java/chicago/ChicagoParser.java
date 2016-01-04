@@ -7,7 +7,7 @@ public class ChicagoParser extends Parser{
 	private static final String AUTHOR_REG = "(.+?\\.\\s)“";
 	private static final String TITLE_REG = "(“.+?\\.”)";
 	private static final String JOURNAL_REG = "(.+\\s)\\d+\\s\\(\\d+\\)";
-	private static final String VOLUME_REG = "(\\d+\\s)";
+	private static final String VOLUME_REG = "(\\d+\\s)\\(\\d+\\)";
 	private static final String YEAR_REG = "(\\(\\d+\\))";
 	private static final String PAGE_REG = "([-\\d]+\\.)";
 	private static final String BOOK_TITLE_REG = "(.+)\\s\\(\\d+\\)";
@@ -30,17 +30,12 @@ public class ChicagoParser extends Parser{
 		paper.author = findField(AUTHOR_REG).map(this::trim).orElse("");		
 		paper.title = findField(TITLE_REG).map(this::trim).orElse("");
 		paper.journal = findField(JOURNAL_REG).map(this::trim).orElse("");
-		if(paper.journal.equals("")) {
-			paper.type = "inproceedings";
-			paper.bookTitle = findField(BOOK_TITLE_REG).map(this::trim).orElse("");
-			paper.year = findField(YEAR_REG).map(this::trim).orElse("");
-		}
-		else {
-			paper.type = "article";
-			paper.volume = findField(VOLUME_REG).map(this::trim).orElse("");
-			paper.year = findField(YEAR_REG).map(this::trim).orElse("");
-			paper.page = findField(PAGE_REG).map(this::trim).orElse("");
-		}
+		paper.type = paper.journal.equals("") ? "inproceedings" : "article";
+		paper.volume = findField(VOLUME_REG).map(this::trim).orElse("");
+		paper.bookTitle = findField(BOOK_TITLE_REG).map(this::trim).orElse("");
+		paper.year = findField(YEAR_REG).map(this::trim).orElse("");
+		paper.page = findField(PAGE_REG).map(this::trim).orElse("");
+		
 		paper.brief = "";
 		return paper;
 	}
