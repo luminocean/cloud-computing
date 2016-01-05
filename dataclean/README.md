@@ -32,3 +32,5 @@ create 'table','apa','bibtex','chicago','mla'
 - apa-4.txt和chicago-4.txt使用的火(utf)星(16)编码
 
 - chicago和mla引用使用的是全角双引号
+- 存在文献重复的现象，一种是因为同一个关键字下，网站给出的文献存在重复，另一种因为文献是跨领域的，在不同组的文本中同时存在
+
