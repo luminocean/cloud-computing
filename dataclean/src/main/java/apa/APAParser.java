@@ -6,7 +6,7 @@ import util.Parser;
 public class APAParser extends Parser{
 	private static final String AUTHOR_REG = "(.+?\\.\\s)";
 	private static final String YEAR_REG = "(\\(\\d+?\\)\\.\\s)";
-	private static final String TITLE_REG = "(.+?\\.\\s)";
+	private static final String TITLE_REG = "(.+?\\.)";
 	private static final String JOURNAL_REG = "(.+?\\,\\s)\\d+,";
 	private static final String VOLUME_REG = "(\\d+?,\\s)";
 	private static final String PAGE_REG = "([-\\d]+?\\.)";
