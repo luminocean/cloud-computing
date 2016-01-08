@@ -1,5 +1,7 @@
 package paper;
 
+import mla.MLAMapper;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -41,6 +43,11 @@ public class Driver extends Configured implements Tool {
 				new Path(args[1]), // 文件夹路径
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
 				APAMapper.class); // Mapper类
+		
+		MultipleInputs.addInputPath(job, // 配置多源输入路径
+				new Path(args[2]), // 文件夹路径
+				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
+				MLAMapper.class); // Mapper类
 				
 		job.setMapOutputKeyClass(NullWritable.class);
 		job.setMapOutputValueClass(Paper.class);
@@ -52,7 +59,7 @@ public class Driver extends Configured implements Tool {
 			job.setOutputKeyClass(ImmutableBytesWritable.class);
 			job.setOutputValueClass(Mutation.class);
 		}else{ // 输出到文本文件
-			String[] formats = {"bibtex","apa"}; // 各种文献格式
+			String[] formats = {"bibtex","apa","mla"}; // 各种文献格式
 			for(String format: formats){
 				// 为每一种文献格式定义一个输出
 				// 在PaperReducer中使用

@@ -42,10 +42,11 @@ public abstract class Parser {
 	 * @return
 	 */
 	protected String trim(String rawStr) {
-		String ret = rawStr.trim().replaceAll("[,\\.]$", "");
+		String ret = rawStr.trim();
 		if(ret.matches("^“.*”$")) {
 			ret = ret.replaceAll("^“", "").replaceAll("”$", "");
 		}
+		ret = ret.replaceAll("[,\\.]$", "");
 		if(ret.matches("^\\(.*\\)$")) {
 			ret = ret.replaceAll("^\\(", "").replaceAll("\\)$", "");
 		}
