@@ -6,9 +6,10 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.hbase.client.Mutation;
-import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.TableOutputFormat;
+import org.apache.hadoop.io.MD5Hash;
 import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -55,14 +56,14 @@ public class Driver extends Configured implements Tool {
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
 				MLAMapper.class); // Mapper类
 
-		job.setMapOutputKeyClass(NullWritable.class);
+		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Paper.class);
 		
 		// Reducer配置
 		if("true".equals(config.get("output.toHbase"))){ // 输出到hbase
 			job.setReducerClass(HBaseReducer.class);
 			job.setOutputFormatClass(TableOutputFormat.class);
-			job.setOutputKeyClass(ImmutableBytesWritable.class);
+			job.setOutputKeyClass(MD5Hash.class);
 			job.setOutputValueClass(Mutation.class);
 		}else{ // 输出到文本文件
 			String[] formats = {"bibtex","apa","mla","chicago"}; // 各种文献格式

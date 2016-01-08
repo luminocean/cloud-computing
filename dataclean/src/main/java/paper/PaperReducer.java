@@ -3,14 +3,15 @@ package paper;
 import java.io.IOException;
 
 import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 
-public class PaperReducer extends Reducer<NullWritable, Paper, NullWritable, Paper>{
+public class PaperReducer extends Reducer<Text, Paper, NullWritable, Paper>{
 	private MultipleOutputs<NullWritable, Paper> mout;
 	
 	@Override
-	protected void setup(Reducer<NullWritable, Paper, NullWritable, Paper>.Context context)
+	protected void setup(Reducer<Text, Paper, NullWritable, Paper>.Context context)
 			throws IOException, InterruptedException {
 		super.setup(context);
 		
@@ -18,7 +19,7 @@ public class PaperReducer extends Reducer<NullWritable, Paper, NullWritable, Pap
 	}
 	
 	@Override
-	protected void cleanup(Reducer<NullWritable, Paper, NullWritable, Paper>.Context context)
+	protected void cleanup(Reducer<Text, Paper, NullWritable, Paper>.Context context)
 			throws IOException, InterruptedException {
 		super.cleanup(context);
 		
@@ -26,10 +27,10 @@ public class PaperReducer extends Reducer<NullWritable, Paper, NullWritable, Pap
 	}
 
 	@Override
-	protected void reduce(NullWritable nw, Iterable<Paper> papers,
+	protected void reduce(Text citeType, Iterable<Paper> papers,
 			Context context) throws IOException, InterruptedException {
 		for(Paper paper: papers){
-			mout.write(paper.PAPER_TYPE, NullWritable.get(), paper, paper.PAPER_TYPE+"-refine-14");
+			mout.write(citeType.toString(), NullWritable.get(), paper, citeType.toString());
 		}	
 	}
 }

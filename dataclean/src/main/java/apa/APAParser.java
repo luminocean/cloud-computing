@@ -29,7 +29,6 @@ public class APAParser extends Parser{
 		if(testContent.length() == 0) return null;
 		
 		Paper paper = new Paper();
-		paper.PAPER_TYPE = "apa";
 		paper.author = findField(AUTHOR_REG).map(this::trim).orElse("");		
 		paper.year = findField(YEAR_REG).map(this::trim).orElse("");
 		paper.title = findField(TITLE_REG).map(this::trim).orElse("");

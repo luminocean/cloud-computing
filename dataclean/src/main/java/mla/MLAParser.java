@@ -30,7 +30,6 @@ public class MLAParser extends Parser{
 		if(testContent.length() == 0) return null;
 		
 		Paper paper = new Paper();
-		paper.PAPER_TYPE = "mla";
 		paper.author = findField(AUTHOR_REG).map(this::trim).orElse("");
 		paper.title = findField(TITLE_REG).map(this::trim).orElse("");
 		paper.journal = findField(JOURNAL_REG).map(this::trim).orElse("");
@@ -42,14 +41,5 @@ public class MLAParser extends Parser{
 		paper.page = !isArticle ? "" : findField(PAGE_REG).map(this::trim).orElse("");
 		paper.brief = "";
 		return paper;
-	}
-	
-	public static void main(String args[]) {
-		String articleText = "Rubner, Yossi et al. “The Earth Mover's Distance as a Metric for Image Retrieval.” International Journal of Computer Vision 40 (2000): 99-121.";
-		System.out.println(new MLAParser(articleText).parse());
-
-		String inproceedingsText = "Bradshaw, Ben. “Semantic based image retrieval: a probabilistic approach.” MM (2000).";
-		System.out.println(new MLAParser(inproceedingsText).parse());
-
-	}
+	}	
 }
