@@ -36,10 +36,10 @@ public class MLAParser extends Parser{
 		paper.journal = findField(JOURNAL_REG).map(this::trim).orElse("");
 		boolean isArticle = !paper.journal.equals("");
 		paper.type = isArticle ? "article" : "inproceedings";
-		paper.volume = isArticle ? "":findField(VOLUME_REG).map(this::trim).orElse("");
+		paper.volume = !isArticle ? "":findField(VOLUME_REG).map(this::trim).orElse("");
 		paper.bookTitle = isArticle ? "" : findField(BOOK_TITLE_REG).map(this::trim).orElse("");
 		paper.year = findField(YEAR_REG).map(this::trim).orElse("");
-		paper.page = isArticle ? "" : findField(PAGE_REG).map(this::trim).orElse("");
+		paper.page = !isArticle ? "" : findField(PAGE_REG).map(this::trim).orElse("");
 		paper.brief = "";
 		return paper;
 	}

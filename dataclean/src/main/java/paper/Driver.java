@@ -20,6 +20,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 import apa.APAMapper;
 import bibtex.BibTexMapper;
+import chicago.ChicagoMapper;
 
 public class Driver extends Configured implements Tool {
 	@Override
@@ -34,21 +35,26 @@ public class Driver extends Configured implements Tool {
 		job.setJarByClass(getClass());
 		
 		// Mapper配置
-		MultipleInputs.addInputPath(job, // 配置多源输入路径
-				new Path(args[0]), // 文件夹路径
-				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
-				BibTexMapper.class); // Mapper类
-		
+		MultipleInputs.addInputPath(job, 
+				new Path(args[0]), 
+				TextInputFormat.class,
+				APAMapper.class);
+
 		MultipleInputs.addInputPath(job, // 配置多源输入路径
 				new Path(args[1]), // 文件夹路径
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
-				APAMapper.class); // Mapper类
-		
+				BibTexMapper.class); // Mapper类
+
+		MultipleInputs.addInputPath(job, 
+				new Path(args[2]), 
+				TextInputFormat.class,
+				ChicagoMapper.class);
+
 		MultipleInputs.addInputPath(job, // 配置多源输入路径
-				new Path(args[2]), // 文件夹路径
+				new Path(args[3]), // 文件夹路径
 				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
 				MLAMapper.class); // Mapper类
-				
+
 		job.setMapOutputKeyClass(NullWritable.class);
 		job.setMapOutputValueClass(Paper.class);
 		
@@ -59,7 +65,7 @@ public class Driver extends Configured implements Tool {
 			job.setOutputKeyClass(ImmutableBytesWritable.class);
 			job.setOutputValueClass(Mutation.class);
 		}else{ // 输出到文本文件
-			String[] formats = {"bibtex","apa","mla"}; // 各种文献格式
+			String[] formats = {"bibtex","apa","mla","chicago"}; // 各种文献格式
 			for(String format: formats){
 				// 为每一种文献格式定义一个输出
 				// 在PaperReducer中使用

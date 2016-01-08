@@ -1,4 +1,4 @@
-﻿Essa, I.A., Grundmann, M., Han, M., & Kwatra, V.. (2010). Efficient hierarchical graph-based video segmentation. CVPR.
+Essa, I.A., Grundmann, M., Han, M., & Kwatra, V.. (2010). Efficient hierarchical graph-based video segmentation. CVPR.
 
 Xu, Chenliang et al. “Streaming Hierarchical Video Segmentation.” ECCV (2012).
 

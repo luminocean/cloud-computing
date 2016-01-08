@@ -28,7 +28,7 @@ public class ChicagoParser extends Parser{
 		
 		Paper paper = new Paper();
 		paper.PAPER_TYPE = "chicago";
-		paper.author = findField(AUTHOR_REG).map(this::trim).orElse("");		
+		paper.author = findField(AUTHOR_REG).map(this::trim).orElse("");
 		paper.title = findField(TITLE_REG).map(this::trim).orElse("");
 		paper.journal = findField(JOURNAL_REG).map(this::trim).orElse("");
 		paper.type = paper.journal.equals("") ? "inproceedings" : "article";
@@ -39,12 +39,5 @@ public class ChicagoParser extends Parser{
 		
 		paper.brief = "";
 		return paper;
-	}
-	
-	public static void main(String args[]) {
-		String text1 = "Leggetter, C. J. and Philip C. Woodland. “Maximum likelihood linear regression for speaker adaptation of continuous density hidden Markov models.” Computer Speech & Language 9 (1995): 171-185.";
-		System.out.println(new ChicagoParser(text1).parse());
-		String text2 = "Joachims, Thorsten. “Training linear SVMs in linear time.” KDD (2006).";
-		System.out.println(new ChicagoParser(text2).parse());
-	}
+	}	
 }
