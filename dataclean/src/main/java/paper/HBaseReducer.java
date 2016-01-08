@@ -9,8 +9,8 @@ import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.TableReducer;
 import org.apache.hadoop.io.NullWritable;
 
+@SuppressWarnings(value={"deprecation","unused"})
 public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableBytesWritable> {
-	// TODO: 这里的colomnFamily和colomn都是硬编码的，是否合适？
 	// 文献属性
 	public static final byte[] type = "type".getBytes();
 	public static final byte[] brief = "brief".getBytes();
@@ -22,11 +22,9 @@ public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableByt
 	public static final byte[] volume = "volumn".getBytes();
 	public static final byte[] page = "page".getBytes();
 
-	@SuppressWarnings("unused")
 	private static boolean test = false;
 	HashMap<String, String> m = new HashMap<String,String>(); 
 
-	@SuppressWarnings("deprecation")
 	public void reduce(NullWritable nw, Iterable<Paper> papers, Context context)
 			throws IOException, InterruptedException {
 		int i = 0;

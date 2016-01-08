@@ -27,6 +27,7 @@ public class ChicagoParser extends Parser{
 		if(testContent.length() == 0) return null;
 		
 		Paper paper = new Paper();
+		paper.PAPER_TYPE = "chicago";
 		paper.author = findField(AUTHOR_REG).map(this::trim).orElse("");		
 		paper.title = findField(TITLE_REG).map(this::trim).orElse("");
 		paper.journal = findField(JOURNAL_REG).map(this::trim).orElse("");

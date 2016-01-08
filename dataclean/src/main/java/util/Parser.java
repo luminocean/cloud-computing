@@ -30,7 +30,6 @@ public abstract class Parser {
 		if(m.find()){
 			String result = m.group(1);
 			pos += m.end(1);
-//			System.out.println(result + "@" + pos);
 			return Optional.of(result);
 		}
 		return Optional.empty();
