@@ -14,8 +14,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -26,7 +24,7 @@ import chicago.ChicagoMapper;
 public class Driver extends Configured implements Tool {
 	@Override
 	public int run(String[] args) throws Exception {
-		if(!argsValids(args)) return -1;
+		if(!argsValid(args)) return -1;
 		
 		// job配置
 		Configuration config = getJobConfig();
@@ -36,25 +34,10 @@ public class Driver extends Configured implements Tool {
 		job.setJarByClass(getClass());
 		
 		// Mapper配置
-		MultipleInputs.addInputPath(job, 
-				new Path(args[0]), 
-				TextInputFormat.class,
-				APAMapper.class);
-
-		MultipleInputs.addInputPath(job, // 配置多源输入路径
-				new Path(args[1]), // 文件夹路径
-				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
-				BibTexMapper.class); // Mapper类
-
-		MultipleInputs.addInputPath(job, 
-				new Path(args[2]), 
-				TextInputFormat.class,
-				ChicagoMapper.class);
-
-		MultipleInputs.addInputPath(job, // 配置多源输入路径
-				new Path(args[3]), // 文件夹路径
-				TextInputFormat.class, // 使用默认的TextInputFormat输入格式
-				MLAMapper.class); // Mapper类
+		MultipleInputs.addInputPath(job, new Path(args[0]), TextInputFormat.class, APAMapper.class);
+		MultipleInputs.addInputPath(job, new Path(args[1]), TextInputFormat.class, BibTexMapper.class);
+		MultipleInputs.addInputPath(job, new Path(args[2]), TextInputFormat.class, ChicagoMapper.class);
+		MultipleInputs.addInputPath(job, new Path(args[3]), TextInputFormat.class, MLAMapper.class);
 
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Paper.class);
@@ -66,20 +49,9 @@ public class Driver extends Configured implements Tool {
 			job.setOutputKeyClass(MD5Hash.class);
 			job.setOutputValueClass(Mutation.class);
 		}else{ // 输出到文本文件
-			String[] formats = {"bibtex","apa","mla","chicago"}; // 各种文献格式
-			for(String format: formats){
-				// 为每一种文献格式定义一个输出
-				// 在PaperReducer中使用
-				MultipleOutputs.addNamedOutput(job, 
-						format, 
-						TextOutputFormat.class, 
-						NullWritable.class, 
-						Paper.class);
-			}
 			job.setReducerClass(PaperReducer.class);
 			job.setOutputKeyClass(NullWritable.class);
 			job.setOutputValueClass(Paper.class);
-			
 			// 配置输出根路径，它是输入参数中最后一个
 			// 即使使用了MultipleOutputs，还是要靠这一行代码来设置所有输出的基础路径
 			FileOutputFormat.setOutputPath(job, new Path(args[args.length-1])); 
@@ -113,7 +85,7 @@ public class Driver extends Configured implements Tool {
 	 * @param args
 	 * @return
 	 */
-	private boolean argsValids(String[] args) {
+	private boolean argsValid(String[] args) {
 		if (args.length < 1) {
 			System.err.printf("Usage: %s [generic options] <input> <output>\n", getClass().getSimpleName());
 			ToolRunner.printGenericCommandUsage(System.err);

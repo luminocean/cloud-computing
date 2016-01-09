@@ -26,7 +26,7 @@ public class HBaseReducer extends TableReducer<Text, Paper, MD5Hash> {
 			throws IOException, InterruptedException {
 		int i = 0;
 		for (Paper paper : papers) {
-			MD5Hash rowKey = MD5Hash.digest(citeType.toString());
+			MD5Hash rowKey = MD5Hash.digest(paper.title);
 			Put put = new Put(rowKey.getDigest());
 			byte[] columnFamily = citeType.toString().getBytes();
 						

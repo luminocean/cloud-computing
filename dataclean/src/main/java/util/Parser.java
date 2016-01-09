@@ -19,7 +19,6 @@ public abstract class Parser {
 	
 	/**
 	 * 在给定文本中寻找匹配正则的字符串
-	 * a non static version.
 	 * @param text
 	 * @param regexStr
 	 * @return

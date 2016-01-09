@@ -18,7 +18,7 @@ public class APAParser extends Parser{
 
 	/**
 	 * BibTeX的type只有article和inproceedings两种，对应的APA格式是
-	 * article: Author, A.A.. (Year, month of Publication). Article title. Magazine Title,Volume, pp.-pp.
+	 * article: Author, A.A.. (Year, month of Publication). Article title. Magazine Title, Volume, pp.-pp.
 	 * inproceedings: Author, A.A.. (Year of Publication). Title of work. Publisher.
 	 * 
 	 * Paper的bookTitle就是Publisher

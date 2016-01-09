@@ -14,7 +14,6 @@ public class PaperReducer extends Reducer<Text, Paper, NullWritable, Paper>{
 	protected void setup(Reducer<Text, Paper, NullWritable, Paper>.Context context)
 			throws IOException, InterruptedException {
 		super.setup(context);
-		
 		mout = new MultipleOutputs<NullWritable, Paper>(context);
 	}
 	
@@ -22,7 +21,6 @@ public class PaperReducer extends Reducer<Text, Paper, NullWritable, Paper>{
 	protected void cleanup(Reducer<Text, Paper, NullWritable, Paper>.Context context)
 			throws IOException, InterruptedException {
 		super.cleanup(context);
-		
 		mout.close();
 	}
 
@@ -30,7 +28,7 @@ public class PaperReducer extends Reducer<Text, Paper, NullWritable, Paper>{
 	protected void reduce(Text citeType, Iterable<Paper> papers,
 			Context context) throws IOException, InterruptedException {
 		for(Paper paper: papers){
-			mout.write(citeType.toString(), NullWritable.get(), paper, citeType.toString());
+			mout.write(NullWritable.get(), paper, citeType.toString());
 		}	
 	}
 }
