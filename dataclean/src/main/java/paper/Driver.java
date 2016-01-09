@@ -43,17 +43,16 @@ public class Driver extends Configured implements Tool {
 		job.setMapOutputValueClass(Paper.class);
 		
 		// Reducer配置
-		if("true".equals(config.get("output.toHbase"))){ // 输出到hbase
+		if(config.get("output.toHbase").equals("true")){ // 输出到hbase
 			job.setReducerClass(HBaseReducer.class);
 			job.setOutputFormatClass(TableOutputFormat.class);
 			job.setOutputKeyClass(MD5Hash.class);
 			job.setOutputValueClass(Mutation.class);
 		}else{ // 输出到文本文件
-			job.setReducerClass(PaperReducer.class);
+			job.setReducerClass(TxtReducer.class);
 			job.setOutputKeyClass(NullWritable.class);
 			job.setOutputValueClass(Paper.class);
 			// 配置输出根路径，它是输入参数中最后一个
-			// 即使使用了MultipleOutputs，还是要靠这一行代码来设置所有输出的基础路径
 			FileOutputFormat.setOutputPath(job, new Path(args[args.length-1])); 
 		}
 		
@@ -73,6 +72,9 @@ public class Driver extends Configured implements Tool {
 		if(config.get("table") != null){
 			config.set("output.toHbase", "true");
 			config.set(TableOutputFormat.OUTPUT_TABLE, config.get("table"));
+		}
+		else {
+			config.set("output.toHbase", "false");
 		}
 		config.set("textinputformat.record.delimiter", "\n\n"); // 设置隔行读取
 		

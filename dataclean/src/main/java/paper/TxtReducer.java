@@ -7,7 +7,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.output.MultipleOutputs;
 
-public class PaperReducer extends Reducer<Text, Paper, NullWritable, Paper>{
+public class TxtReducer extends Reducer<Text, Paper, NullWritable, Paper>{
 	private MultipleOutputs<NullWritable, Paper> mout;
 	
 	@Override
