@@ -45,8 +45,14 @@ public class Paper implements Writable{
 
 	@Override
 	public String toString() {
-		return "Paper [" + "author=" + author + ", bookTitle=" + bookTitle + ", brief="
-				 				+ brief + ", journal=" + journal + ", page=" + page + ", title=" + title + ", type=" + type
-				 				+ ", volume=" + volume + ", year=" + year + "]";
+		return "[" + "author=" + author + 
+				", title=" + title +
+				", type=" + type +
+				", bookTitle=" + bookTitle + 
+				", journal=" + journal + 
+				", brief=" + brief + 
+				", volume=" + volume +
+				", page=" + page + 
+				", year=" + year + "]";
 	}
 }
