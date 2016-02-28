@@ -34,6 +34,7 @@ public class BibTexParser {
 		paper.type = RegexUtil.findField(text, TYPE_REG).orElse("");
 		paper.volume = RegexUtil.findField(text, VOLUME_REG).orElse("");
 		paper.year = RegexUtil.findField(text, YEAR_REG).orElse("");
+		paper.src = text;
 		
 		return paper;
 	}

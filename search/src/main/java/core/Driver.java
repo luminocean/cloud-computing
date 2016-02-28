@@ -3,10 +3,11 @@ package core;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.hbase.mapreduce.MultiTableOutputFormat;
+import org.apache.hadoop.hbase.mapreduce.TableMapReduceUtil;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -24,24 +25,24 @@ public class Driver extends Configured implements Tool{
 		Job job = Job.getInstance(config, "Reverse Index");
 		job.setJarByClass(getClass());
 		
-		// 设置输入文件路径
+		// 设置输入文件路径与对应mapper
 		FileInputFormat.addInputPath(job, new Path(args[0]));
-		FileOutputFormat.setOutputPath(job, new Path(args[1]));
-		
-		// 设置mapper和reducer
 		job.setMapperClass(BibTexMapper.class);
-	    job.setReducerClass(BibTexReducer.class);
-	    
-	    // 设置输出的键值
-	    job.setOutputKeyClass(NullWritable.class);
-	    job.setOutputValueClass(Paper.class);
+		job.setMapOutputKeyClass(NullWritable.class);
+		job.setMapOutputValueClass(Paper.class);
+		
+		// 输出设置
+		job.setOutputFormatClass(MultiTableOutputFormat.class);
+		job.setReducerClass(HBaseReducer.class);
+		job.setNumReduceTasks(2);
+		TableMapReduceUtil.addDependencyJars(job);
+		TableMapReduceUtil.addDependencyJars(job.getConfiguration());
 
 	    // 任务开始
 	    return job.waitForCompletion(true) ? 0 : 1;
 	}
 	
-	/**
-	 * 检查命令行参数
+	 /* 检查命令行参数
 	 * 至少要保证有一个输入目录
 	 * @param args
 	 * @return

@@ -16,6 +16,7 @@ public class Paper implements Writable{
 	public String type;
 	public String volume;
 	public String year;
+	public String src;
 	
 	@Override
 	public void write(DataOutput out) throws IOException {
@@ -28,6 +29,7 @@ public class Paper implements Writable{
 		out.writeUTF(type);
 		out.writeUTF(volume);
 		out.writeUTF(year);
+		out.writeUTF(src);
 	}
 	
 	@Override
@@ -41,6 +43,7 @@ public class Paper implements Writable{
 		type = in.readUTF();
 		volume = in.readUTF();
 		year = in.readUTF();
+		src = in.readUTF();
 	}
 
 	@Override
