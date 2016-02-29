@@ -7,13 +7,12 @@ import java.util.List;
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
 import org.apache.hadoop.hbase.mapreduce.TableReducer;
-import org.apache.hadoop.io.MD5Hash;
 import org.apache.hadoop.io.NullWritable;
 
+import util.Constants;
 import util.StringSplitter;
 
-public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableBytesWritable>{
-	private static final String CHARSET = "utf-8";
+public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableBytesWritable> implements Constants{
 	@Override
 	protected void reduce(NullWritable key, Iterable<Paper> list, Context context)
 					throws IOException, InterruptedException {
