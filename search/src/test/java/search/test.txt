@@ -1,0 +1,29 @@
+Lew, Michael S. et al. “Content-based multimedia information retrieval: State of the art and challenges.” TOMCCAP 2 (2006): 1-19.
+
+Müller, Henning et al. “Overview of the CLEF 2009 Medical Image Retrieval Track.” CLEF (2009).
+
+Clough, Paul D. et al. “The CLEF 2005 Cross-Language Image Retrieval Track.” CLEF (2003).
+
+Chen, Zheng et al. “Web mining for Web image retrieval.” JASIST 52 (2001): 831-839.
+
+Müller, Henning et al. “Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task.” CLEF (2008).
+
+Smola, A.J., & Schölkopf, B.. (2004). A tutorial on support vector regression. Statistics and Computing, 14, 199-222.
+
+Cristianini, N., & Shawe-Taylor, J.. (2001). An Introduction to Support Vector Machines and Other Kernel-based Learning Methods. DAGLIB.
+
+Gong, Y., Huang, T.S., Yang, J., & Yu, K.. (2009). Linear spatial pyramid matching using sparse coding for image classification. CVPR.
+
+Larsson, E.G., & Selén, Y.. (2006). Linear Regression with a Sparse Parameter Vector. ICASSP.
+
+Han, J., & Kamber, M.. (2000). Data Mining: Concepts and Techniques. MK.
+
+Hauptmann, Alexander G. and Michael G. Christel. “Successful approaches in the TREC video retrieval evaluations.” MM (2004).
+
+Liu, Jingjing, Xian-Sheng Hua and Shipeng Li. “Object-Sensitive Query Analysis for Video Search.” MMSP (2007).
+
+Shechtman, Eli and Michal Irani. “Matching Local Self-Similarities across Images and Videos.” CVPR (2007).
+
+Li, Zhen and Edward J. Delp. “Wyner-Ziv video side estimator: conventional motion search methods revisited.” ICIP (2005).
+
+Andrès, Frédéric, Kinji Ono, Shinichi Satoh and Nicolas Dessaigne. “Toward the MEdiaSys VIdeo Search Engine (MEVISE).” VDB (2000).
