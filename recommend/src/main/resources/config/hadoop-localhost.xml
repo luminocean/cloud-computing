@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 全分布式Map Reduce任务配置 -->
+<configuration>
+	<property>
+		<name>fs.defaultFS</name>
+		<value>hdfs://localhost/</value>
+	</property>
+	<property>
+		<name>mapreduce.framework.name</name>
+		<value>yarn</value>
+	</property>
+</configuration>
