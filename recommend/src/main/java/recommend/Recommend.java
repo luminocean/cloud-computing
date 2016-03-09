@@ -63,7 +63,7 @@ public class Recommend {
 		
 		// 将所有的paper数据使用TreeMap按照相似度排序
 		// 相同相似度的paper放在同一个list里面
-		// 之后由flatten方法来将其平铺为list
+		// 之后由flatten方法来将这个TreeMap平铺为一整个list
 		TreeMap<Integer, List<Paper>> tree = new TreeMap<>((n1,n2) -> n2-n1);
 		for(Paper paper: papers){
 			if( paper.equals(query) ) continue;
@@ -85,10 +85,10 @@ public class Recommend {
 	 * Set<Entry<Integer, List<Paper>>>
 	 * 平铺为List<Pair<Integer, Paper>>
 	 * 
-	 * 之所以用Pair是因为无法创建Entry，功能上Pair和Entry是一样的
-	 * @param set Entry<Integer, List<Paper>>集合，特点是一个key对应了一个list
-	 * @param size 最后返回的list大小
-	 * @return <相似度,文献>键值对列表
+	 * 之所以用Pair是因为用户代码无法创建Entry因此使用Pair来代替
+	 * @param set 要平铺的Entry<Integer, List<Paper>>集合，特点是一个key对应了一个list
+	 * @param size 最后返回的list大小，超出的会被截去
+	 * @return 平铺后的<Integer,Paper>键值对列表
 	 */
 	private List<Pair<Integer, Paper>> flatten(Set<Entry<Integer, List<Paper>>> set, int size) {
 		// 先将set转为一个list

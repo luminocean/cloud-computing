@@ -1,5 +1,12 @@
 package util;
 
+/**
+ * 键值对包装类
+ * @author luminocean
+ *
+ * @param <K>
+ * @param <V>
+ */
 public class Pair<K,V> {
 	public K key;
 	public V value;

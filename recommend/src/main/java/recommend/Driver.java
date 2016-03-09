@@ -7,10 +7,14 @@ import java.util.Map.Entry;
 import model.Paper;
 import util.Pair;
 
+/**
+ * 推荐查询驱动类
+ */
 public class Driver {
 
 	public static void main(String[] args) throws IOException {
 		Recommend rec = new Recommend();
+		// 单文献推荐
 		List<Pair<Integer,Paper>> papers = rec.recommend("@article{"
 				+ "Arbelaez2011IEEETransPatternAnalMachIntell,  "
 				+ "title={Contour Detection and Hierarchical Image Segmentation},  "
@@ -23,8 +27,5 @@ public class Driver {
 			System.out.println(pair.getKey());
 			System.out.println(pair.getValue());
 		}
-		
-		/// 多输入文献处理的重点在于要捕捉这多个文献重合的部分
-		/// 比如叠加
 	}
 }

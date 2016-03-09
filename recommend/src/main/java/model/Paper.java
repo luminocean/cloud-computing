@@ -73,6 +73,8 @@ public class Paper implements Writable{
 		similarity += SimilarityUtil.stringSimilarity(this.journal, paper.journal);
 		similarity += SimilarityUtil.stringSimilarity(this.bookTitle, paper.bookTitle);
 		
+		// TODO: year字段目前是直接匹配，是否可以根据相近程度计算不同的相似度？
+		
 		return similarity;
 	}
 	

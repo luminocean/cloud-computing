@@ -13,6 +13,10 @@ import org.apache.hadoop.util.ToolRunner;
 
 import model.Paper;
 
+/**
+ * HBase数据插入驱动类
+ * 用于读取bibtex文本数据将其插入HBase中
+ */
 public class Driver extends Configured implements Tool{
 
 	public int run(String[] args) throws Exception {
