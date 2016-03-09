@@ -17,7 +17,6 @@ public class TestSearch {
 			boolean found = false;
 			while(result.hasNext()) {
 				String next = result.next();
-//				System.out.println(next);
 				if(next.toLowerCase().equals(expectedResult.toLowerCase())) {
 					found = true;
 				}

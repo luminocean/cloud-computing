@@ -1,0 +1,360 @@
+查询条件为：Lew, Michael S. et al. “Content-based multimedia information retrieval: State of the art and challenges.” TOMCCAP 2 (2006): 1-19.
+
+要求返回数量为1时的结果:
+Content-based multimedia information retrieval: State of the art and challenges
+
+要求返回数量为3时的结果:
+Content-based multimedia information retrieval: State of the art and challenges
+Image retrieval using wavelet-based salient points
+A 20th Anniversary Survey: Introduction to 'Content-Based Image Retrieval at the End of the Early Years'
+
+要求返回数量为10时的结果:
+Content-based multimedia information retrieval: State of the art and challenges
+Image retrieval using wavelet-based salient points
+A 20th Anniversary Survey: Introduction to 'Content-Based Image Retrieval at the End of the Early Years'
+A Probabilistic Architecture for Content-Based Image Retrieval
+A Survey on Visual Content-Based Video Indexing and Retrieval
+A Unified Log-Based Relevance Feedback Scheme for Image Retrieval
+A review of content-based image retrieval systems in medical applications - clinical benefits and future directions
+A survey of content-based image retrieval with high-level semantics
+An integrated approach for content-based video object segmentation and retrieval
+CBSA: content-based soft annotation for multimodal image retrieval using Bayes point machines
+
+-------------------------------------------------------------
+
+查询条件为：Müller, Henning et al. “Overview of the CLEF 2009 Medical Image Retrieval Track.” CLEF (2009).
+
+要求返回数量为1时的结果:
+Overview of the CLEF 2009 Medical Image Retrieval Track
+
+要求返回数量为3时的结果:
+Overview of the CLEF 2009 Medical Image Retrieval Track
+Overview of the ImageCLEF 2012 Medical Image Retrieval and Classification Tasks
+Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task
+
+要求返回数量为10时的结果:
+A review of content-based image retrieval systems in medical applications - clinical benefits and future directions
+Content-based query of image databases: inspirations from text retrieval
+Overview of the CLEF 2009 Medical Image Retrieval Track
+Overview of the ImageCLEF 2012 Medical Image Retrieval and Classification Tasks
+Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task
+Strategies for Positive and Negative Relevance Feedback in Image Retrieval
+The CLEF 2005 Cross-Language Image Retrieval Track
+The CLEF Cross Language Image Retrieval Track (ImageCLEF) 2004
+The Truth about Corel - Evaluation in Image Retrieval
+Content-based Image Retrieval in Medical Applications
+
+-------------------------------------------------------------
+
+查询条件为：Clough, Paul D. et al. “The CLEF 2005 Cross-Language Image Retrieval Track.” CLEF (2003).
+
+要求返回数量为1时的结果:
+The CLEF 2005 Cross-Language Image Retrieval Track
+
+要求返回数量为3时的结果:
+The CLEF 2005 Cross-Language Image Retrieval Track
+The CLEF Cross Language Image Retrieval Track (ImageCLEF) 2004
+Overview of the CLEF 2009 Medical Image Retrieval Track
+
+要求返回数量为10时的结果:
+Overview of the CLEF 2009 Medical Image Retrieval Track
+Overview of the ImageCLEF 2012 Medical Image Retrieval and Classification Tasks
+Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task
+The CLEF 2005 Cross-Language Image Retrieval Track
+The CLEF Cross Language Image Retrieval Track (ImageCLEF) 2004
+Automatic image annotation and retrieval using cross-media relevance models
+Boosting Image Retrieval
+Negative Evidences and Co-occurences in Image Retrieval: The Benefit of PCA and Whitening
+The Bayesian image retrieval system, PicHunter: theory, implementation, and psychophysical experiments
+The Earth Mover's Distance as a Metric for Image Retrieval
+
+-------------------------------------------------------------
+
+查询条件为：Chen, Zheng et al. “Web mining for Web image retrieval.” JASIST 52 (2001): 831-839.
+
+要求返回数量为1时的结果:
+Web mining for Web image retrieval
+
+要求返回数量为3时的结果:
+Web mining for Web image retrieval
+Image Retrieval from the World Wide Web: Issues, Techniques, and Systems
+Learning to cluster web search results
+
+要求返回数量为10时的结果:
+Image Retrieval from the World Wide Web: Issues, Techniques, and Systems
+Learning to cluster web search results
+Learning to reduce the semantic gap in web image retrieval and annotation
+NUS-WIDE: a real-world web image database from National University of Singapore
+Statistical correlation analysis in image retrieval
+Web Image Retrieval Re-Ranking with Relevance Model
+Web mining for Web image retrieval
+Boosted multi-task learning for face verification with applications to web image and video search
+Bundling features for large scale partial-duplicate web image search
+CLUE: cluster-based retrieval of images by unsupervised learning
+
+-------------------------------------------------------------
+
+查询条件为：Müller, Henning et al. “Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task.” CLEF (2008).
+
+要求返回数量为1时的结果:
+Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task
+
+要求返回数量为3时的结果:
+Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task
+Overview of the CLEF 2009 Medical Image Retrieval Track
+Overview of the ImageCLEF 2012 Medical Image Retrieval and Classification Tasks
+
+要求返回数量为10时的结果:
+A review of content-based image retrieval systems in medical applications - clinical benefits and future directions
+Content-based query of image databases: inspirations from text retrieval
+Overview of the CLEF 2009 Medical Image Retrieval Track
+Overview of the ImageCLEF 2012 Medical Image Retrieval and Classification Tasks
+Overview of the ImageCLEFmed 2008 Medical Image Retrieval Task
+Strategies for Positive and Negative Relevance Feedback in Image Retrieval
+The CLEF 2005 Cross-Language Image Retrieval Track
+The CLEF Cross Language Image Retrieval Track (ImageCLEF) 2004
+The Truth about Corel - Evaluation in Image Retrieval
+Content-based Image Retrieval in Medical Applications
+
+-------------------------------------------------------------
+
+查询条件为：Smola, A.J., & Schölkopf, B.. (2004). A tutorial on support vector regression. Statistics and Computing, 14, 199-222.
+
+要求返回数量为1时的结果:
+A tutorial on support vector regression
+
+要求返回数量为3时的结果:
+A tutorial on support vector regression
+Support Vector Method for Function Approximation, Regression Estimation and Signal Processing
+Support Vector Regression Machines
+
+要求返回数量为10时的结果:
+A tutorial on support vector regression
+Support Vector Method for Function Approximation, Regression Estimation and Signal Processing
+Support Vector Regression Machines
+A Tutorial on Support Vector Machines for Pattern Recognition
+Large-scale linear support vector regression
+New approaches to support vector ordinal regression
+Parameter-insensitive kernel in extreme learning for non-linear support vector regression
+Robust Linear and Support Vector Regression
+SVMTorch: Support Vector Machines for Large-Scale Regression Problems
+Support Vector Ordinal Regression
+
+-------------------------------------------------------------
+
+查询条件为：Cristianini, N., & Shawe-Taylor, J.. (2001). An Introduction to Support Vector Machines and Other Kernel-based Learning Methods. DAGLIB.
+
+要求返回数量为1时的结果:
+An Introduction to Support Vector Machines and Other Kernel-based Learning Methods
+
+要求返回数量为3时的结果:
+An Introduction to Support Vector Machines and Other Kernel-based Learning Methods
+Bias-Variance Analysis of Support Vector Machines for the Development of SVM-Based Ensemble Methods
+Knowledge-based Analysis of Microarray Gene Expression Data by Using Support Vector Machines
+
+要求返回数量为10时的结果:
+An Introduction to Support Vector Machines and Other Kernel-based Learning Methods
+Bias-Variance Analysis of Support Vector Machines for the Development of SVM-Based Ensemble Methods
+Knowledge-based Analysis of Microarray Gene Expression Data by Using Support Vector Machines
+A comparison of methods for multiclass support vector machines
+Asymmetric Bagging and Random Subspace for Support Vector Machines-Based Relevance Feedback in Image Retrieval
+Deep Learning using Linear Support Vector Machines
+Deep Learning using Support Vector Machines
+Gene Selection for Cancer Classification using Support Vector Machines
+Parameter-insensitive kernel in extreme learning for non-linear support vector regression
+SVMTorch: Support Vector Machines for Large-Scale Regression Problems
+
+-------------------------------------------------------------
+
+查询条件为：Gong, Y., Huang, T.S., Yang, J., & Yu, K.. (2009). Linear spatial pyramid matching using sparse coding for image classification. CVPR.
+
+要求返回数量为1时的结果:
+Linear spatial pyramid matching using sparse coding for image classification
+
+要求返回数量为3时的结果:
+Linear spatial pyramid matching using sparse coding for image classification
+Locality-constrained Linear Coding for image classification
+Large-scale image classification: Fast feature extraction and SVM training
+
+要求返回数量为10时的结果:
+Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories
+Hyper-class augmented and regularized deep learning for fine-grained image classification
+Image Indexing Using Color Correlograms
+Large-scale image classification: Fast feature extraction and SVM training
+Linear spatial pyramid matching using sparse coding for image classification
+Locality-constrained Linear Coding for image classification
+Retinal Layer Segmentation of Macular Oct Images Using Boundary Classification References and Links
+Cosegmentation of Image Pairs by Histogram Matching - Incorporating a Global Constraint into MRFs
+Discriminant-EM Algorithm with Application to Image Retrieval
+Estimating Intrinsic Component Images using Non-Linear Regression
+
+-------------------------------------------------------------
+
+查询条件为：Larsson, E.G., & Selén, Y.. (2006). Linear Regression with a Sparse Parameter Vector. ICASSP.
+
+要求返回数量为1时的结果:
+Linear Regression with a Sparse Parameter Vector
+
+要求返回数量为3时的结果:
+Linear Regression with a Sparse Parameter Vector
+Algorithms for robust linear regression by exploiting the connection to sparse signal recovery
+Parameter-insensitive kernel in extreme learning for non-linear support vector regression
+
+要求返回数量为10时的结果:
+Algorithms for robust linear regression by exploiting the connection to sparse signal recovery
+Distributed sparse linear regression
+Large-scale linear support vector regression
+Linear Regression with a Sparse Parameter Vector
+Minimum classification error linear regression for acoustic model adaptation of continuous density HMMs
+Parameter-insensitive kernel in extreme learning for non-linear support vector regression
+Robust Linear and Support Vector Regression
+Robust face recognition using trimmed linear regression
+Sparse Features for PCA-Like Linear Regression
+3D Human Pose from Silhouettes by Relevance Vector Regression
+
+-------------------------------------------------------------
+
+查询条件为：Han, J., & Kamber, M.. (2000). Data Mining: Concepts and Techniques. MK.
+
+要求返回数量为1时的结果:
+Data Mining: Concepts and Techniques
+
+要求返回数量为3时的结果:
+Data Mining: Concepts and Techniques
+Data Mining: Practical Machine Learning Tools and Techniques with Java Implementations
+Classifying large data sets using SVMs with hierarchical clusters
+
+要求返回数量为10时的结果:
+Classifying large data sets using SVMs with hierarchical clusters
+Data Mining: Concepts and Techniques
+Data Mining: Practical Machine Learning Tools and Techniques with Java Implementations
+Techniques and Systems for Image and Video Retrieval
+The WEKA data mining software: an update
+80 Million Tiny Images: A Large Data Set for Nonparametric Object and Scene Recognition
+A Framework for Learning Predictive Structures from Multiple Tasks and Unlabeled Data
+A Tutorial on Support Vector Machines for Pattern Recognition
+A Unified Log-Based Relevance Feedback Scheme for Image Retrieval
+A memory learning framework for effective image retrieval
+
+-------------------------------------------------------------
+
+查询条件为：Hauptmann, Alexander G. and Michael G. Christel. “Successful approaches in the TREC video retrieval evaluations.” MM (2004).
+
+要求返回数量为1时的结果:
+Successful approaches in the TREC video retrieval evaluations
+
+要求返回数量为3时的结果:
+Successful approaches in the TREC video retrieval evaluations
+Establishing the utility of non-text search for news video retrieval with real world users
+Merging storyboard strategies and automatic retrieval for improving interactive video search
+
+要求返回数量为10时的结果:
+Establishing the utility of non-text search for news video retrieval with real world users
+Merging storyboard strategies and automatic retrieval for improving interactive video search
+Story Segmentation and Detection of Commercials in Broadcast News Video
+Successful approaches in the TREC video retrieval evaluations
+Cross-domain video concept detection using adaptive svms
+IBM Research TRECVID-2007 Video Retrieval System
+Practical elimination of near-duplicates from web video search
+Real-Time Near-Duplicate Elimination for Web Video Search With Content and Context
+Real-time compressed-domain spatiotemporal segmentation and ontologies for video indexing and retrieval
+Supervised classification for video shot segmentation
+
+-------------------------------------------------------------
+
+查询条件为：Liu, Jingjing, Xian-Sheng Hua and Shipeng Li. “Object-Sensitive Query Analysis for Video Search.” MMSP (2007).
+
+要求返回数量为1时的结果:
+Object-Sensitive Query Analysis for Video Search
+
+要求返回数量为3时的结果:
+Object-Sensitive Query Analysis for Video Search
+Video search re-ranking via multi-graph propagation
+Query-independent learning for video search
+
+要求返回数量为10时的结果:
+Automatic Video Genre Categorization using Hierarchical SVM
+Automatic video annotation through search and mining
+Bayesian video search reranking
+Listen, look, and gotcha: instant video search with mobile phones by layered audio-video indexing
+Object-Sensitive Query Analysis for Video Search
+Online video recommendation based on multimodal fusion and relevance feedback
+Query-independent learning for video search
+Towards content-based relevance ranking for video search
+Video search re-ranking via multi-graph propagation
+Analysis of online video search and sharing
+
+-------------------------------------------------------------
+
+查询条件为：Shechtman, Eli and Michal Irani. “Matching Local Self-Similarities across Images and Videos.” CVPR (2007).
+
+要求返回数量为1时的结果:
+Matching Local Self-Similarities across Images and Videos
+
+要求返回数量为3时的结果:
+Matching Local Self-Similarities across Images and Videos
+In defense of Nearest-Neighbor based image classification
+Space-Time Video Completion
+
+要求返回数量为10时的结果:
+Actions as Space-Time Shapes
+Detecting Irregularities in Images and in Video
+Efficient representation of local geometry for large scale object retrieval
+Event-Based Analysis of Video
+In defense of Nearest-Neighbor based image classification
+Matching Local Self-Similarities across Images and Videos
+Space-Time Completion of Video
+Space-Time Video Completion
+Beyond Bags of Features: Spatial Pyramid Matching for Recognizing Natural Scene Categories
+Bootstrapping SVM Active Learning by Incorporating Unlabelled Images for Image Retrieval
+
+-------------------------------------------------------------
+
+查询条件为：Li, Zhen and Edward J. Delp. “Wyner-Ziv video side estimator: conventional motion search methods revisited.” ICIP (2005).
+
+要求返回数量为1时的结果:
+Wyner-Ziv video side estimator: conventional motion search methods revisited
+
+要求返回数量为3时的结果:
+A Compressed Video Database Structured for Active Browsing and Search
+Wyner-Ziv video side estimator: conventional motion search methods revisited
+Efficient Video Similarity Measurement and Search
+
+要求返回数量为10时的结果:
+A Compressed Video Database Structured for Active Browsing and Search
+Efficient Video Similarity Measurement and Search
+NLM video search
+Wyner-Ziv video side estimator: conventional motion search methods revisited
+"What is in that Video Anyway?" In Search of Better Browsing
+3D video segmentation using point distance histograms
+A Comparison of Score, Rank and Probability-Based Fusion Methods for Video Shot Retrieval
+A fully automated content-based video search engine supporting spatiotemporal queries
+A new diamond search algorithm for fast block-matching motion estimation
+A quick search method for audio and video signals based on histogram pruning
+
+-------------------------------------------------------------
+
+查询条件为：Andrès, Frédéric, Kinji Ono, Shinichi Satoh and Nicolas Dessaigne. “Toward the MEdiaSys VIdeo Search Engine (MEVISE).” VDB (2000).
+
+要求返回数量为1时的结果:
+Toward the MEdiaSys VIdeo Search Engine (MEVISE)
+
+要求返回数量为3时的结果:
+Toward the MEdiaSys VIdeo Search Engine (MEVISE)
+A fully automated content-based video search engine supporting spatiotemporal queries
+Cataloging and Search Engine for Video Library
+
+要求返回数量为10时的结果:
+Toward the MEdiaSys VIdeo Search Engine (MEVISE)
+A fully automated content-based video search engine supporting spatiotemporal queries
+Cataloging and Search Engine for Video Library
+Columbia University's semantic video search engine
+Columbia University's semantic video search engine 2008
+GRVS: a georeferenced video search engine
+Image and Video Search Engine for the World Wide Web
+LeeDeo: Web-Crawled Academic Video Search Engine
+Pavideoge: A Metadata Markup Video Structure in Video Search Engine
+Pavideoge: A New Video Processing Method in Video Search Engine
+
+-------------------------------------------------------------
+
