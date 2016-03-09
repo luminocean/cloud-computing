@@ -14,6 +14,7 @@ import org.apache.hadoop.hbase.client.Result;
 import org.apache.hadoop.io.Writable;
 
 import util.Constants;
+import util.SimilarityUtil;
 
 public class Paper implements Writable{
 	public static final String CHARSET = Constants.CHARSET;
@@ -34,8 +35,16 @@ public class Paper implements Writable{
 	// inproceeding部分
 	public String bookTitle;
 	
+	/**
+	 * 创建一个空的paper对象
+	 */
 	public Paper() {}
 	
+	/**
+	 * 使用HBase的查询结果创建Paper实例
+	 * @param result
+	 * @throws UnsupportedEncodingException
+	 */
 	public Paper(Result result) throws UnsupportedEncodingException {
 		src = getValueFromResult(result, "src");
 		type = getValueFromResult(result, "type");
@@ -50,44 +59,21 @@ public class Paper implements Writable{
 	}
 
 	/**
-	 * 计算两个paper对象之间的欧几里得距离
+	 * 计算两个paper对象之间的相似度
 	 * @param paper
 	 * @return
 	 */
-	public int distance(Paper paper){
-		int distance = 0;
+	public int similarity(Paper paper){
+		int similarity = 0;
 		
-		distance += stringDistance(this.type, paper.type);
-		distance += stringDistance(this.author, paper.author) * 3;
-		distance += stringDistance(this.brief, paper.brief);
-		distance += stringDistance(this.title, paper.title) * 2;
-		distance += stringDistance(this.year, paper.year) * 2;
-		distance += stringDistance(this.journal, paper.journal);
-		// distance += stringDistance(this.volume, paper.volume);
-		// distance += stringDistance(this.pages, paper.pages);
-		distance += stringDistance(this.bookTitle, paper.bookTitle);
+		// type, brief, volume, pages不参与相似度计算
+		similarity += SimilarityUtil.stringSimilarity(this.author, paper.author) * 3;
+		similarity += SimilarityUtil.stringSimilarity(this.title, paper.title) * 2;
+		similarity += SimilarityUtil.stringSimilarity(this.year, paper.year);
+		similarity += SimilarityUtil.stringSimilarity(this.journal, paper.journal);
+		similarity += SimilarityUtil.stringSimilarity(this.bookTitle, paper.bookTitle);
 		
-		return distance;
-	}
-	
-	// 计算两个字符串之间的距离（相似度）
-	private int stringDistance(String s1, String s2){
-		String[] splits1 = s1.split(" ");
-		String[] splits2 = s2.split(" ");
-		
-		HashSet<String> set = new HashSet<>();
-		for(String str: splits1){
-			set.add(str);
-		}
-		
-		int distance = 0;
-		for(String str: splits2){
-			if( set.contains(str) ){
-				distance++;
-			}
-		}
-		
-		return distance;
+		return similarity;
 	}
 	
 	/**
