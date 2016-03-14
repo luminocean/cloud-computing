@@ -1,0 +1,31 @@
+@article{Rubner2000InternationalJournalofComputerVision,
+			  title={The Earth Mover's Distance as a Metric for Image Retrieval},
+			  author={Yossi Rubner and Carlo Tomasi and Leonidas J. Guibas},
+			  journal={International Journal of Computer Vision},
+			  year={2000},
+			  volume={40},
+			  pages={99-121}
+			}
+
+@article{Huang2003PatternRecognition,
+			  title={Image retrieval by texture similarity},
+			  author={Po-Whei Huang and S. K. Dai},
+			  journal={Pattern Recognition},
+			  year={2003},
+			  volume={36},
+			  pages={665-679}
+			}
+
+@inproceedings{Xia2014AAAI,
+			  title={Supervised Hashing for Image Retrieval via Image Representation Learning},
+			  author={Rongkai Xia and Yan Pan and Hanjiang Lai and Cong Liu and Shuicheng Yan},
+			  booktitle={AAAI},
+			  year={2014}
+			}
+
+@inproceedings{Sumana2008MMSP,
+			  title={Content based image retrieval using curvelet transform},
+			  author={Ishrat Jahan Sumana and Md. Monirul Islam and Dengsheng Zhang and Guojun Lu},
+			  booktitle={MMSP},
+			  year={2008}
+			}
