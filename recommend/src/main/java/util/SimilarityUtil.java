@@ -25,6 +25,11 @@ public class SimilarityUtil {
 		}
 
 		for (String str : splits1) {
+			if (str == null) {
+				continue;
+			}
+
+			str = str.toLowerCase();
 			if (str.length() >= 3 && map.containsKey(str)) {
 				similarity += map.get(str);
 			}
