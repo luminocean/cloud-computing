@@ -15,7 +15,7 @@ import org.apache.hadoop.io.Writable;
 import util.Constants;
 import util.SimilarityUtil;
 
-public class Paper implements Writable {
+public class Paper implements Writable, Comparable<Paper>{
 	public static final String CHARSET = Constants.CHARSET;
 
 	// paper部分
@@ -160,5 +160,10 @@ public class Paper implements Writable {
 			return false;
 
 		return this.title.equals(((Paper) obj).title);
+	}
+
+	@Override
+	public int compareTo(Paper o) {
+		return title.compareTo(o.title);
 	}
 }

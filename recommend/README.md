@@ -12,7 +12,6 @@ hbase shell中
 ```
 # 表名, 列族名
 create 'cite', 'paper' 
-create 'feedback', 'like', 'dislike'
 ```
 
 ###准备数据
