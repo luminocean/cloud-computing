@@ -3,7 +3,7 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PaperRecommendQueryEntity {
+public class QueryEntity {
 
 	public Map<String, Integer> authers = new HashMap<>();;
 

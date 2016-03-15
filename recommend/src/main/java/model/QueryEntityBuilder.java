@@ -10,9 +10,9 @@ public class QueryEntityBuilder {
 
 	private static final double INCREASE_WEIGHT = 1.2;
 
-	public PaperRecommendQueryEntity build(Set<Paper> paperSet) {
+	public QueryEntity build(Set<Paper> paperSet) {
 
-		PaperRecommendQueryEntity queryEntity = new PaperRecommendQueryEntity();
+		QueryEntity queryEntity = new QueryEntity();
 
 		for (Paper p : paperSet) {
 			if (p == null) {
@@ -25,7 +25,7 @@ public class QueryEntityBuilder {
 
 	}
 
-	private void buildQueryEntityByQueryPaper(PaperRecommendQueryEntity queryEntity, Paper paper) {
+	private void buildQueryEntityByQueryPaper(QueryEntity queryEntity, Paper paper) {
 
 		if (paper == null || queryEntity == null) {
 			return;

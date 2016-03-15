@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 import model.Paper;
@@ -14,9 +16,11 @@ import util.Pair;
  */
 public class Driver {
 
-	public static void main(String[] args) throws IOException {
-
-		String query = readFileByLines("query.txt");
+	public static void main(String[] args) throws IOException, URISyntaxException {
+		
+		URL queryUrl = Driver.class.getClassLoader().getResource("query.txt");
+		File queryFile = new File(queryUrl.toURI());
+		String query = readFileByLines(queryFile);
 
 		Recommend rec = new Recommend();
 		// // 单文献推荐
@@ -39,9 +43,7 @@ public class Driver {
 		}
 	}
 
-	public static String readFileByLines(String fileName) {
-
-		File file = new File(fileName);
+	public static String readFileByLines(File file) {
 		BufferedReader reader = null;
 		StringBuilder sb = new StringBuilder();
 

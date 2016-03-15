@@ -65,7 +65,7 @@ public class Paper implements Writable {
 	 * @param paper
 	 * @return
 	 */
-	public int similarity(PaperRecommendQueryEntity queryEntity) {
+	public int similarity(QueryEntity queryEntity) {
 		int similarity = 0;
 
 		// type, brief, volume, pages不参与相似度计算

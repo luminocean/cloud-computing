@@ -2,7 +2,6 @@ package mapred;
 
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable;
@@ -11,7 +10,6 @@ import org.apache.hadoop.io.NullWritable;
 
 import model.Paper;
 import util.Constants;
-import util.StringSplitter;
 
 public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableBytesWritable> implements Constants{
 	@Override
