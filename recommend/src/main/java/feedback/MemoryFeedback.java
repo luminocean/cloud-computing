@@ -53,7 +53,7 @@ public class MemoryFeedback implements Feedback {
 	public void dislike(Collection<Paper> keys, Paper recommended) {
 		String keyword = toString(keys, recommended);
 		if(!dislikeMap.containsKey(keyword)) {
-			dislikeMap.put(keyword, 0);
+			dislikeMap.put(keyword, 1);
 		}
 		dislikeMap.put(keyword, dislikeMap.get(keyword) + 1);
 	}
