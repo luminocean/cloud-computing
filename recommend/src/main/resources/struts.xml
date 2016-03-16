@@ -4,11 +4,19 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="operation" extends="struts-default" namespace="/op">
+	
 		<!-- 定义处理请求URL为recommend.action的Action -->
 		<action name="recommend" class="action.RecommendAction" method="recommend">
 			<!-- 定义处理结果字符串和资源之间的映射关系 -->
-			<result name="success">/success.jsp</result>
+			<result name="success">/literatures.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		
+		<!-- 定义处理请求URL为likeOrNot.action的Action -->
+		<action name="likeOrNot" class="action.LikeOrNotAction" method="likeOrNot">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
 	</package>
 </struts>

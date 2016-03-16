@@ -34,6 +34,7 @@ public class Driver {
 
 		List<Pair<Integer, Paper>> papers = rec.recommend(query, 20);
 
+
 		// 输出查询结果
 		for (Pair<Integer, Paper> pair : papers)
 

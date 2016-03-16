@@ -26,9 +26,10 @@ public class HBaseReducer extends TableReducer<NullWritable, Paper, ImmutableByt
 			// 将paper原始字符串写入cite表中
 			// MD5Hash rowKey = MD5Hash.digest(paper.title);
 			Put put = new Put(paper.title.getBytes(CHARSET));
-			put.addColumn("src".getBytes(CHARSET), 
-					"content".getBytes(CHARSET), 
-					paper.src.getBytes(CHARSET));
+//			put.addColumn("src".getBytes(CHARSET), 
+//					"content".getBytes(CHARSET), 
+//					paper.src.getBytes(CHARSET));
+			paper.fillIn(put);
 			context.write(new ImmutableBytesWritable("cite".getBytes(CHARSET)), put);
 			
 			// 拆分源文本

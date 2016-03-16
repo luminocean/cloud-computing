@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Hello,world</title>
 </head>
 <body>
 	<form name="input" action="/recommend/op/recommend.action" method="get">
 		<h4>Literature:</h4>
-		<textarea name="literature" rows="2" cols="60"></textarea>
-		<input type="submit" value="submit" >
+		<textarea name="literature" rows="8" cols="80"></textarea>
+		<input type="submit" value="submit" />
 	</form>
 </body>
 </html>

@@ -15,7 +15,7 @@ import org.apache.hadoop.io.Writable;
 import util.Constants;
 import util.SimilarityUtil;
 
-public class Paper implements Writable, Comparable<Paper>{
+public class Paper implements Writable, Comparable<Paper> {
 	public static final String CHARSET = Constants.CHARSET;
 
 	// paper部分
@@ -141,9 +141,12 @@ public class Paper implements Writable, Comparable<Paper>{
 
 	@Override
 	public String toString() {
-		return "Paper [src=" + src + ", type=" + type + ", author=" + author + ", brief=" + brief + ", title=" + title
-				+ ", year=" + year + ", journal=" + journal + ", volume=" + volume + ", pages=" + pages + ", booktitle="
-				+ bookTitle + "]";
+		// return "Paper [src=" + src + ", type=" + type + ", author=" + author
+		// + ", brief=" + brief + ", title=" + title
+		// + ", year=" + year + ", journal=" + journal + ", volume=" + volume +
+		// ", pages=" + pages + ", booktitle="
+		// + bookTitle + "]";
+		return "Paper [" + src + "]";
 	}
 
 	@Override

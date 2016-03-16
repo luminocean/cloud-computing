@@ -33,6 +33,7 @@ public class Recommend {
 	private Feedback feedBack;
 	private List<Paper> papers = new ArrayList<>(2000);
 	private static final String DELIMITER = "@";
+	private static Recommend singleton = null;
 
 	public Recommend() throws IOException {
 		feedBack = new MemoryFeedback();
@@ -43,6 +44,14 @@ public class Recommend {
 		// 加载后直接断开数据库连接
 		table.close();
 		connection.close();
+	}
+
+	public static Recommend getInstance() throws IOException {
+		if (singleton == null) {
+			singleton = new Recommend();
+		}
+		return singleton;
+
 	}
 
 	// 加载数据库里的所有paper数据，缓存在内存中
@@ -61,7 +70,9 @@ public class Recommend {
 
 	/**
 	 * 根据请求进行推荐
-	 * @param queryText BibTex格式的请求字符串
+	 * 
+	 * @param queryText
+	 *            BibTex格式的请求字符串
 	 * @return 推荐的<相似度,文献>键值对列表
 	 */
 	public List<Pair<Integer, Paper>> recommend(String queryText, int size) {
@@ -73,11 +84,11 @@ public class Recommend {
 			public int compare(Pair<Integer, Paper> e1, Pair<Integer, Paper> e2) {
 				if (e1.getKey() != e2.getKey()) // 相似度不同时，按相似度由高到低排序
 					return e2.getKey() - e1.getKey();
-				else 							// 相似度相同时，按照发表年份倒序排列
+				else // 相似度相同时，按照发表年份倒序排列
 					return e2.getValue().year.compareTo(e1.getValue().year);
 			}
 		};
-		
+
 		TreeSet<Pair<Integer, Paper>> recommendedSet = new TreeSet<>(descendingComparator);
 		for (Paper paper : papers) {
 			if (paperSet.contains(paper))
@@ -86,15 +97,15 @@ public class Recommend {
 			similarity *= feedBack.getLikeness(paperSet, paper);
 			recommendedSet.add(new Pair<>(similarity, paper));
 		}
-		
+
 		List<Pair<Integer, Paper>> recommendedList = new ArrayList<>();
-		recommendedSet.stream()
-			.limit(size + 1)
-			.forEach(p -> {recommendedList.add(p);});
+		recommendedSet.stream().limit(size).forEach(p -> {
+			recommendedList.add(p);
+		});
 		return recommendedList;
 	}
 
-	private Set<Paper> parseQuery(String query) {
+	public static Set<Paper> parseQuery(String query) {
 		Set<Paper> paperSet = new HashSet<>();
 		String[] querys = query.split(DELIMITER);
 		Paper paper = null;
@@ -107,5 +118,13 @@ public class Recommend {
 		}
 
 		return paperSet;
+	}
+
+	public Feedback getFeedBack() {
+		return feedBack;
+	}
+
+	public void setFeedBack(Feedback feedBack) {
+		this.feedBack = feedBack;
 	}
 }
