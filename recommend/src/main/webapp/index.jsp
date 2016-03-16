@@ -4,13 +4,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 <title>Hello,world</title>
 </head>
 <body>
-	<form name="input" action="/recommend/op/recommend.action" method="get">
-		<h4>Literature:</h4>
-		<textarea name="literature" rows="8" cols="80"></textarea>
-		<input type="submit" value="submit" />
+
+	<div class="container">
+		<div class="row">
+			<div class=".col-md-10">
+				<h1>Recommend</h1>
+			</div>
+		</div>
+	</div>
+	<form class="form-horizontal" name="input" action="/recommend/recommend.action" method="get">
+		<div class="form-group form-group-lg" style="margin-top: 250px">
+			<label class="col-sm-2 control-label" for="formGroupInputLarge">Literature</label>
+			<div class="col-sm-7">
+				<input class="form-control" type="text" id="input" name="literature"
+					placeholder="input literature to get recommend">
+			</div>
+			<button class="col-sm-1 btn btn-primary btn-lg" type="submit">Search</button>
+		</div>
 	</form>
+
 </body>
 </html>
