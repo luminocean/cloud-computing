@@ -32,7 +32,7 @@ public class RecommendAction extends ActionSupport {
 
 		String query = request.getParameter("literature");
 		Collection<Paper> queryPapers = Recommend.parseQuery(query);
-		list = rec.recommend(query, 20);
+		list = rec.recommend(query, 10);
 		session.setAttribute("queryPapers", queryPapers);
 		session.setAttribute("list", list);
 
